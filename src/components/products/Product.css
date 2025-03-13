@@ -1,0 +1,117 @@
+.product {
+  width: 100%;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px #00000015;
+  transition: 0.3s;
+  animation: fadeIn 1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-img-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.product-info {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.product-name-rating p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.product-name-rating img {
+  width: 70px;
+}
+
+.product-description {
+  color: #676767;
+  font-size: 16px;
+  max-height: 50px;
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  padding-right: 5px;
+}
+
+.product-description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.product-description::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.product-description::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-price {
+  color: tomato;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.product-img-container .product-add {
+  width: 35px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.product-counter {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 50px;
+  background-color: white;
+}
+
+.product-counter img {
+  width: 30px;
+}
+
+.product-category, .product-quantity {
+  color: #444;
+  font-size: 16px;
+  margin-top: 5px;
+}

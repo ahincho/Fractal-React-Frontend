@@ -1,0 +1,73 @@
+.orders-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.orders-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th, .orders-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.orders-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.orders-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.orders-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-orders {
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  color: #888;
+}
+
+.orders-table .actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.orders-table .actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.orders-table .actions .view {
+  background-color: #3498db;
+  color: white;
+}
+
+.orders-table .actions .delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.orders-table .actions button:hover {
+  opacity: 0.8;
+}

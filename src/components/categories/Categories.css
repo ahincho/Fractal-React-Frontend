@@ -1,0 +1,45 @@
+.explore {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.explore h1 {
+  color: #262626;
+  font-weight: 500;
+  font-size: max(2vw, 24px);
+}
+
+.explore-text {
+  max-width: 60%;
+  color: #808080;
+}
+
+.explore-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 10px 0px;
+  overflow-x: scroll;
+}
+
+.explore-list::-webkit-scrollbar {
+  display: none;
+}
+
+.explore hr {
+  margin: 5px 0px;
+  height: 2px;
+  background-color: #e2e2e2;
+  border: none;
+}
+
+@media (max-width: 1050px) {
+  .explore-text {
+    max-width: 100%;
+    font-size: 14px;
+  }
+}
