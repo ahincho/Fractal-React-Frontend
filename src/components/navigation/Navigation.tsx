@@ -37,7 +37,17 @@ const Navigation: React.FC<NavigationProps> = ({ setShowSignUp }) => {
           <img src={assets.searchIcon} alt="orders-icon" onClick={() => handleAuthenticationNavigation("/orders")} />
         </div>
         <div className="navbar-search-icon">
-          <img src={assets.basketIcon} onClick={() => handleAuthenticationNavigation("/cart")} alt="basket-icon" />
+          <img
+            src={assets.basketIcon}
+            onClick={() => {
+              if (getTotalCartAmount() > 0) {
+                handleAuthenticationNavigation("/cart");
+              } else {
+                toast.error("You must have products in the cart before entering");
+              }
+            }}
+            alt="basket-icon"
+          />
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {user ? (

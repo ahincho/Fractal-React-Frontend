@@ -16,7 +16,7 @@ const Payment: React.FC = () => {
   }
   const { getTotalCartAmount, setCartItems, cartItems } = storeContext;
   const { user } = authContext;
-  const { createData, loading } = useCreateData(orderService.createOneProduct);
+  const { createData, loading } = useCreateData(orderService.createOneOrder);
   const handleProceed = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {

@@ -37,7 +37,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
       </div>
-      <hr />
       <p className="footer-copyright">
         Copyright 2025 fractal.com.pe - All Rights Reserved
       </p>

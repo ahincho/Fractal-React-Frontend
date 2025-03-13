@@ -1,6 +1,6 @@
 import basketIcon from './basketIcon.png';
 import logo from './logo.png';
-import headerImg from './header.png';
+import headerImg from './header.webp';
 import searchIcon from './searchIcon.png';
 import addIconWhite from './addIconWhite.png';
 import addIconGreen from './addIconGreen.png';

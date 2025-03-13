@@ -1,7 +1,7 @@
 .header {
   height: 32vw;
   margin: 30px auto;
-  background: url("/src/assets/header.png") no-repeat center center;
+  background: url("/src/assets/header.webp") no-repeat center center;
   background-size: cover;
   position: relative;
   border-radius: 20px;

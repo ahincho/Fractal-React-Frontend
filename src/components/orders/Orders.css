@@ -1,10 +1,11 @@
 .orders-container {
   margin: 20px auto;
   padding: 20px;
-  max-width: 1000px;
+  max-width: 1200px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 
 .orders-container h2 {
@@ -14,9 +15,15 @@
   font-weight: bold;
 }
 
+.orders-table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
 .orders-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 700px;
 }
 
 .orders-table th, .orders-table td {
@@ -38,13 +45,6 @@
   background-color: #f1f1f1;
 }
 
-.no-orders {
-  text-align: center;
-  padding: 15px;
-  font-size: 16px;
-  color: #888;
-}
-
 .orders-table .actions {
   display: flex;
   justify-content: center;
@@ -58,16 +58,35 @@
   cursor: pointer;
 }
 
-.orders-table .actions .view {
-  background-color: #3498db;
-  color: white;
+@media (max-width: 760px) {
+  .orders-container {
+    padding: 10px;
+  }
+  .orders-table-container {
+    overflow-x: auto;
+  }
+  .orders-table {
+    min-width: 600px;
+  }
+  .orders-table th, .orders-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
 
-.orders-table .actions .delete {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.orders-table .actions button:hover {
-  opacity: 0.8;
+@media (max-width: 480px) {
+  .orders-container {
+    padding: 5px;
+  }
+  .orders-table {
+    min-width: 500px;
+  }
+  .orders-table th:nth-child(5),
+  .orders-table td:nth-child(5) {
+    display: none;
+  }
+  .orders-table th, .orders-table td {
+    font-size: 12px;
+    padding: 5px;
+  }
 }

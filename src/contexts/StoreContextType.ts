@@ -9,7 +9,7 @@ export interface StoreContextType {
   categories: CategoryResponse[];
   loadingCategories: boolean;
   errorCategories: AxiosError | null;
-  cartItems: Record<string, number>;
+  cartItems: Record<number, number>;
   setCartItems: React.Dispatch<React.SetStateAction<Record<string, number>>>;
   addToCart: (itemId: string | number) => void;
   removeFromCart: (itemId: string | number) => void;

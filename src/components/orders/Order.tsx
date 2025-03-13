@@ -6,12 +6,14 @@ const Order: React.FC<OrderProps> = ({ order }) => {
   return (
     <tr className="order-row">
       <td>{order.id}</td>
-      <td>{order.username}</td>
       <td>{order.number}</td>
-      <td>${order.total.toFixed(2)}</td>
+      <td>{order.status}</td>
+      <td>{order.total ? `$${order.total.toFixed(2)}` : 'Not Confirmed'}</td>
       <td>{new Date(order.createdAt).toLocaleDateString()}</td>
       <td>
-        <button className="order-details-button">View Details</button>
+        <button className="order-details-button">View</button>
+        <button className="order-update-button">Update</button>
+        <button className="order-delete-button">Delete</button>
       </td>
     </tr>
   );

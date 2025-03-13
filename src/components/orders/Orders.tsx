@@ -44,8 +44,8 @@ const Orders: React.FC = () => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Username</th>
             <th>Order Number</th>
+            <th>Status</th>
             <th>Total</th>
             <th>Created At</th>
             <th>Actions</th>
