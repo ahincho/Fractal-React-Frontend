@@ -8,6 +8,7 @@ import Footer from "./components/footer/Footer";
 import Navigation from "./components/navigation/Navigation";
 import SignUp from "./components/signUp/SignUp";
 import Orders from "./components/orders/Orders";
+import OrderDetail from "./components/details/OrderDetail";
 
 const App: React.FC = () => {
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
@@ -19,8 +20,9 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Orders/>} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/payment" element={<Payment />}/>
+          <Route path="/orders/:orderId" element={<OrderDetail />} />
+          <Route path="/carts" element={<Cart />} />
+          <Route path="/payments/:orderId" element={<Payment />}/>
         </Routes>
       </div>
       <Footer />

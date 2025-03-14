@@ -1,10 +1,9 @@
 .orders-container {
-  margin: 20px auto;
-  padding: 20px;
-  max-width: 1200px;
+  width: 100%;
+  margin: 20px 4px;
+  padding: 4px 4px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
 }
 
@@ -70,7 +69,7 @@
   }
   .orders-table th, .orders-table td {
     font-size: 14px;
-    padding: 8px;
+    padding: 6px;
   }
 }
 
@@ -81,8 +80,8 @@
   .orders-table {
     min-width: 500px;
   }
-  .orders-table th:nth-child(5),
-  .orders-table td:nth-child(5) {
+  .orders-table th:nth-child(4),
+  .orders-table td:nth-child(4) {
     display: none;
   }
   .orders-table th, .orders-table td {

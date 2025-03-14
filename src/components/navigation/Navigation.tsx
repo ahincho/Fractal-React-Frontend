@@ -41,7 +41,7 @@ const Navigation: React.FC<NavigationProps> = ({ setShowSignUp }) => {
             src={assets.basketIcon}
             onClick={() => {
               if (getTotalCartAmount() > 0) {
-                handleAuthenticationNavigation("/cart");
+                handleAuthenticationNavigation("/carts");
               } else {
                 toast.error("You must have products in the cart before entering");
               }

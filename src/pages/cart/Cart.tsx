@@ -1,21 +1,66 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { StoreContext } from "../../contexts/StoreContext";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
+import { OrderCreateRequest } from "../../types/orders/OrderCreateRequest";
+import useCreateData from "../../hooks/UseCreateData";
+import orderService from "../../services/OrderService";
+import { useNavigate } from "react-router-dom"; // Asegúrate de importar useNavigate
 import "./Cart.css";
 
 const Cart: React.FC = () => {
   const storeContext = useContext(StoreContext);
-  const navigate = useNavigate();
-  if (!storeContext) {
-    return <p>Store Context is not available</p>;
+  const authContext = useContext(AuthenticationContext);
+  const navigate = useNavigate(); // Usar el hook useNavigate aquí
+
+  if (!storeContext || !authContext) {
+    toast.error("Context is not available");
+    return <strong>Context is not available</strong>;
   }
-  const { cartItems, products, removeFromCart, getTotalCartAmount } = storeContext;
-  const subtotal = getTotalCartAmount().toFixed(2);
-  const deliveryFee = parseFloat(subtotal) > 0 ? 2.0 : 0.0;
-  const total = (parseFloat(subtotal) + deliveryFee).toFixed(2);
-  const handleProceed = () => {
-    navigate("/payment");
+
+  const { cartItems, getTotalCartAmount, setCartItems } = storeContext;
+  const { user } = authContext;
+  const { createData, loading } = useCreateData(orderService.createOneOrder);
+
+  const total = getTotalCartAmount().toFixed(2);
+
+  const handlePlaceOrder = async () => {
+    if (!user) {
+      toast.error("User not authenticated.");
+      return;
+    }
+
+    if (Object.keys(cartItems).length === 0) {
+      toast.error("Cart is empty. Add products before proceeding.");
+      return;
+    }
+
+    const orderRequest: OrderCreateRequest = {
+      username: user.username,
+      details: Object.entries(cartItems).map(([productId, quantity]) => ({
+        productId: Number(productId),
+        quantity,
+      })),
+    };
+
+    try {
+      await createData(orderRequest);
+      setCartItems({}); // Limpiar el carrito después de realizar la compra
+      toast.success("Order placed successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      // Redirigir a la página de pago o la siguiente acción deseada
+      navigate("/orders"); // Redirigir a la página de pago
+    } catch (error) {
+      console.error("Error creating order:", error);
+      toast.error("Failed to place order. Try again!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -29,17 +74,18 @@ const Cart: React.FC = () => {
         </div>
         <br />
         <hr />
-        {products?.map((item) => {
-          if (cartItems[item.id] > 0) {
+        {Object.entries(cartItems).map(([productId, quantity]) => {
+          const product = storeContext.products.find(item => item.id === Number(productId));
+          if (product && quantity > 0) {
             return (
-              <React.Fragment key={item.id}>
+              <React.Fragment key={product.id}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="product" />
-                  <p>{item.name}</p>
-                  <p>${item.price.toFixed(2)}</p>
-                  <p>{cartItems[item.id]}</p>
-                  <p>${(item.price * cartItems[item.id]).toFixed(2)}</p>
-                  <p className="cross" onClick={() => removeFromCart(item.id)}>X</p>
+                  <img src={product.image} alt="product" />
+                  <p>{product.name}</p>
+                  <p>${product.price.toFixed(2)}</p>
+                  <p>{quantity}</p>
+                  <p>${(product.price * quantity).toFixed(2)}</p>
+                  <p className="cross" onClick={() => storeContext.removeFromCart(product.id)}>X</p>
                 </div>
                 <hr />
               </React.Fragment>
@@ -50,23 +96,16 @@ const Cart: React.FC = () => {
       </div>
       <div className="cart-bottom">
         <div className="cart-total">
-          <h2>Cart Total</h2>
+          <h2>Description</h2>
           <div>
             <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>${subtotal}</p>
+              <p>Total</p>
+              <p>${total}</p>
             </div>
             <hr />
-            <div className="cart-total-details">
-              <p>Delivery fee</p>
-              <p>${deliveryFee.toFixed(2)}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>${total}</b>
-            </div>
-            <button onClick={handleProceed}>Proceed to Payment</button>
+            <button onClick={handlePlaceOrder} disabled={loading}>
+              {loading ? "Placing order..." : "Place Order"}
+            </button>
           </div>
         </div>
       </div>

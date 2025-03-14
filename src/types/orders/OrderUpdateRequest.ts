@@ -1,6 +1,6 @@
-import { DetailCreateRequest } from "./DetailCreateRequest";
+import { DetailUpdateRequest } from "./DetailUpdateRequest";
 
 export interface OrderUpdateRequest {
   username: string;
-  details: DetailCreateRequest[];
+  details: DetailUpdateRequest[];
 }

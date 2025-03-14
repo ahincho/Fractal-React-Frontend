@@ -7,46 +7,103 @@
   padding: 12px;
 }
 
+.order-row td button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: max(1.75vh, 14px);
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px;
+  min-width: 90px;
+}
+
 .order-details-button {
   background-color: #007bff;
   color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
 .order-details-button:hover {
   background-color: #0056b3;
 }
 
+.order-delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.order-delete-button:hover {
+  background-color: #c82333;
+}
+
+.order-payment-button {
+  background-color: #ff6347;
+  color: white;
+}
+
+.order-payment-button:hover {
+  background-color: #e5533d;
+}
+
 .order-update-button {
   background-color: #28a745;
   color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  margin-left: 5px;
 }
 
 .order-update-button:hover {
   background-color: #218838;
 }
 
-.order-delete-button {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  margin-left: 5px;
+.order-row td button:active {
+  transform: scale(0.98);
 }
 
-.order-delete-button:hover {
-  background-color: #c82333;
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.orders-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.orders-container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.orders-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .order-row td {
+    padding: 8px;
+  }
+  .order-row td button {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px 10px;
+    margin: 5px 0;
+  }
+  .orders-table {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .order-row td button {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
 }
